@@ -7,17 +7,20 @@ SELECT gender, AVG(salary) AS avg_sal, MAX(salary) AS max_sal, MIN(salary) AS mi
 FROM employee_demographics AS dem
 JOIN employee_salary AS sal
 	ON dem.employee_id = sal.employee_id
-GROUP BY gender)
+GROUP BY gender
+)
 SELECT AVG(avg_sal)
 FROM CTE_Example
 ;
 
 SELECT AVG(avg_sal)
-FROM (SELECT gender, AVG(salary) AS avg_sal, MAX(salary) AS max_sal, MIN(salary) AS min_sal, COUNT(salary) AS count_sal
+FROM (
+SELECT gender, AVG(salary) AS avg_sal, MAX(salary) AS max_sal, MIN(salary) AS min_sal, COUNT(salary) AS count_sal
 FROM employee_demographics AS dem
 JOIN employee_salary AS sal
 	ON dem.employee_id = sal.employee_id
-GROUP BY gender) AS eg_sub
+GROUP BY gender
+) AS eg_sub
 ;
 
 WITH CTE_Example AS
